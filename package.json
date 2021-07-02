@@ -1,0 +1,59 @@
+{
+	"name": "sass-module-map",
+	"description": "This Sass module provides more advanced map functions.",
+	"version": "1.0.0",
+	"author": "roydukkey",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/roydukkey/sass-module-map.git"
+	},
+	"homepage": "https://github.com/roydukkey/sass-module-map#readme",
+	"bugs": {
+		"url": "https://github.com/roydukkey/sass-module-map/issues"
+	},
+	"keywords": [
+		"sass",
+		"scss",
+		"dart-sass",
+		"map"
+	],
+	"main": "./index.sass",
+	"dependencies": {
+		"sass-exception": "^1.0.0",
+		"sass-list": "^2.0.0",
+		"sass-meta": "^1.0.0"
+	},
+	"devDependencies": {
+		"clean-package": "^1.0.1",
+		"cspell": "^5.6.6",
+		"fs-extra": "^10.0.0",
+		"jest": "^27.0.6",
+		"replace-in-file": "^6.2.0",
+		"sass": "^1.35.1",
+		"sass-true": "^6.0.1",
+		"yarpm": "^1.1.1"
+	},
+	"scripts": {
+		"lint": "cspell --config './.vscode/cSpell.json' --no-progress '**/{.*/**/,.*/**/.,,.}*'",
+		"pretest": "yarpm run lint",
+		"test": "jest",
+		"prepack": "yarpm run test -- --verbose=false && clean-package",
+		"new:pack": "yarpm pack && clean-package restore",
+		"new:publish": "yarpm publish && clean-package restore"
+	},
+	"clean-package": {
+		"indent": "\t",
+		"remove": [
+			"clean-package",
+			"jest",
+			"scripts"
+		]
+	},
+	"jest": {
+		"testEnvironment": "node",
+		"verbose": true,
+		"coverageDirectory": ".jest/coverage",
+		"cacheDirectory": ".jest/cache"
+	}
+}

@@ -1,0 +1,95 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group api
+////
+
+@use 'sass:list'
+@use 'sass:meta'
+@use 'sass-list/src/list/compare/string' as sass-list
+@use 'sass-meta/src/meta/call-or-reference' as sass-meta
+
+
+///
+/// Returns a function reference to the map value comparison method used by the sort function.
+///
+/// @return {Function}
+///
+	@overload value()
+///
+/// Used to compare two key/value pairs' values by converting them to strings, then comparing the value's sequences of UTF-16 code units values in ascending order. All null items are shifted right.
+///
+/// @param {*} $first-pair - The key/value pair for the comparison.
+/// @param {*} $second-pair - The key/value pair for the comparison.
+/// @ignore @param {Number} $center [never] - Irrelevant for this function.
+///
+/// @return {Number}
+///
+	@overload value($first-pair, $second-pair, $center: never)
+///
+/// @access public
+/// @require _value
+/// @require sass-meta.call-or-reference
+///
+@function value($args...)
+	@return sass-meta.call-or-reference(meta.get-function('_value'), $args...)
+
+
+///
+/// Returns a function reference to the descending map value comparison method used by the sort function.
+///
+/// @return {Function}
+///
+	@overload value-desc()
+///
+/// Used to compare two key/value pairs' values by converting them to strings, then comparing the value's sequences of UTF-16 code units values in descending order. All null items are shifted left.
+///
+/// @param {*} $first-pair - The key/value pair for the comparison.
+/// @param {*} $second-pair - The key/value pair for the comparison.
+/// @ignore @param {Number} $center [never] - Irrelevant for this function.
+///
+/// @return {Number}
+///
+	@overload value-desc($first-pair, $second-pair, $center: never)
+///
+/// @access public
+/// @require _value-desc
+/// @require sass-meta.call-or-reference
+///
+@function value-desc($args...)
+	@return sass-meta.call-or-reference(meta.get-function('_value-desc'), $args...)
+
+
+///
+/// Used to compare two key/value pairs' values by converting them to strings, then comparing the value's sequences of UTF-16 code units values in ascending order. All null items are shifted right.
+///
+/// @param {*} $first-pair - The key/value pair for the comparison.
+/// @param {*} $second-pair - The key/value pair for the comparison.
+/// @ignore @param {Number} $center [never] - Irrelevant for this function.
+///
+/// @return {Number}
+/// @require sass-list.string
+///
+@function _value($first-pair, $second-pair, $center: never)
+	@if list.length($first-pair) < 2
+		@return 1
+
+	@if list.length($second-pair) < 2
+		@return -1
+
+	@return sass-list.string(list.nth($first-pair, 2), list.nth($second-pair, 2), $center)
+
+
+///
+/// Used to compare two key/value pairs' values by converting them to strings, then comparing the value's sequences of UTF-16 code units values in descending order. All null items are shifted left.
+///
+/// @param {*} $first-pair - The key/value pair for the comparison.
+/// @param {*} $second-pair - The key/value pair for the comparison.
+/// @ignore @param {Number} $center [never] - Irrelevant for this function.
+///
+/// @return {Number}
+/// @require _value
+///
+@function _value-desc($first-pair, $second-pair, $center: never)
+	@return _value($second-pair, $first-pair, $center)

@@ -1,0 +1,17 @@
+# User-specific files
+*.user
+*.vs
+
+# Package Managers
+node_modules
+node_require
+npm-debug.log
+
+# Build Artifacts
+*.lock.json
+*-lock.json
+*.lock
+*.backup
+*.cache
+*.tgz
+.jest

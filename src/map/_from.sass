@@ -1,0 +1,34 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group api
+////
+
+@use 'sass:list'
+@use 'sass:map'
+@use 'sass-exception/src/exception/parameter' as exception
+
+
+///
+/// Creates a map from the provided key/value pairs.
+///
+/// @param {ArgList} $pairs - The key/value pairs from which a map will be created.
+/// @return {Map}
+///
+/// @throw One or more key/value pairs are required.
+///
+/// @access public
+/// @require exception.parameter
+///
+@function from($pairs...)
+
+	@if list.length($pairs) < 1
+		@error exception.parameter('One or more key/value pairs are required', 'from', 'pairs')
+
+	$result: ()
+
+	@each $key, $value in $pairs
+		$result: map.set($result, $key, $value)
+
+	@return $result

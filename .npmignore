@@ -1,0 +1,20 @@
+# User-specific files
+*.editorconfig
+*.user
+*.vs
+
+# Package Managers
+node_modules
+node_require
+npm-debug.log
+
+# Build Artifacts
+*.lock.json
+*-lock.json
+*.backup
+*.cache
+*.tgz
+.jest
+
+# Source Code
+test

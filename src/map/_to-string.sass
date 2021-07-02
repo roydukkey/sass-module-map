@@ -1,0 +1,29 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group api
+////
+
+@use 'sass:meta'
+@use 'sass-exception/src/core/from' as core
+@use 'sass-exception/src/exception/parameter-type' as exception
+
+
+///
+/// Returns a string representing the specified map and its key/value pairs.
+///
+/// @param {Map | ArgList} $map - The map from which to generate a string. When is an argument list, keywords will be included.
+/// @return {String}
+///
+/// @access public
+/// @require core.to-string
+/// @require exception.parameter-type
+///
+@function to-string($map)
+	$type: meta.type-of($map)
+
+	@if $type != 'map' and $type != 'arglist'
+		@error exception.parameter-type('to-string', 'map', $map, 'map', 'arglist')
+
+	@return core.to-string($map, $type)
