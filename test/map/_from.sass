@@ -25,7 +25,7 @@
 		$expected: (a: 3, b: null)
 		@include true.assert-equal($assert, $expected)
 
-	@include true.it('Creates a map from an value other than a list')
+	@include true.it('Creates a map from a value other than a list')
 		$assert: src.from(death-star)
 		$expected: (death-star: null)
 		@include true.assert-equal($assert, $expected)
