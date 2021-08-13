@@ -6,8 +6,8 @@
 ////
 
 @use 'sass:meta'
-@use 'sass-exception/src/core/from' as core
-@use 'sass-exception/src/exception/parameter-type' as exception
+@use 'sass-exception/src/core/from'
+@use 'sass-exception/src/exception/parameter-type'
 
 
 ///
@@ -17,13 +17,13 @@
 /// @return {String}
 ///
 /// @access public
-/// @require core.to-string
-/// @require exception.parameter-type
+/// @require from.to-string
+/// @require parameter-type.parameter-type
 ///
 @function to-string($map)
 	$type: meta.type-of($map)
 
 	@if $type != 'map' and $type != 'arglist'
-		@error exception.parameter-type('to-string', 'map', $map, 'map', 'arglist')
+		@error parameter-type.parameter-type('to-string', 'map', $map, 'map', 'arglist')
 
-	@return core.to-string($map, $type)
+	@return from.to-string($map, $type)

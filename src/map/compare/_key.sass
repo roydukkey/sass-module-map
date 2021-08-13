@@ -7,8 +7,8 @@
 
 @use 'sass:list'
 @use 'sass:meta'
-@use 'sass-list/src/list/compare/string' as sass-list
-@use 'sass-meta/src/meta/call-or-reference' as sass-meta
+@use 'sass-list/src/list/compare/string'
+@use 'sass-meta/src/meta/call-or-reference'
 
 
 ///
@@ -30,10 +30,10 @@
 ///
 /// @access public
 /// @require _key
-/// @require sass-meta.call-or-reference
+/// @require call-or-reference.call-or-reference
 ///
 @function key($args...)
-	@return sass-meta.call-or-reference(meta.get-function('_key'), $args...)
+	@return call-or-reference.call-or-reference(meta.get-function('_key'), $args...)
 
 
 ///
@@ -55,10 +55,10 @@
 ///
 /// @access public
 /// @require _key-desc
-/// @require sass-meta.call-or-reference
+/// @require call-or-reference.call-or-reference
 ///
 @function key-desc($args...)
-	@return sass-meta.call-or-reference(meta.get-function('_key-desc'), $args...)
+	@return call-or-reference.call-or-reference(meta.get-function('_key-desc'), $args...)
 
 
 ///
@@ -69,7 +69,7 @@
 /// @ignore @param {Number} $center [never] - Irrelevant for this function.
 ///
 /// @return {Number}
-/// @require sass-list.string
+/// @require string.string
 ///
 @function _key($first-pair, $second-pair, $center: never)
 	@if list.length($first-pair) < 1
@@ -78,7 +78,7 @@
 	@if list.length($second-pair) < 1
 		@return -1
 
-	@return sass-list.string(list.nth($first-pair, 1), list.nth($second-pair, 1), $center)
+	@return string.string(list.nth($first-pair, 1), list.nth($second-pair, 1), $center)
 
 
 ///

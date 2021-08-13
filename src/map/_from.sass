@@ -7,7 +7,7 @@
 
 @use 'sass:list'
 @use 'sass:map'
-@use 'sass-exception/src/exception/parameter' as exception
+@use 'sass-exception/src/exception/parameter'
 
 
 ///
@@ -19,12 +19,12 @@
 /// @throw One or more key/value pairs are required.
 ///
 /// @access public
-/// @require exception.parameter
+/// @require parameter.parameter
 ///
 @function from($pairs...)
 
 	@if list.length($pairs) < 1
-		@error exception.parameter('One or more key/value pairs are required', 'from', 'pairs')
+		@error parameter.parameter('One or more key/value pairs are required', 'from', 'pairs')
 
 	$result: ()
 
