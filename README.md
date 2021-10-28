@@ -1,3 +1,8 @@
+**Renamed!**
+This package has been renamed to [`@sass-fairy/map`](https://github.com/roydukkey/sass-fairy/tree/master/packages/map#readme) and organised in a mono-repo for better maintainablity, an improved user experience, and [full documentation](https://sass-fairy.com/api/map). Explore more about the change at [sass-fairy.com](https://sass-fairy.com).
+
+---
+
 # sass-module-map
 
 [![Release Version](https://img.shields.io/npm/v/sass-module-map.svg)](https://www.npmjs.com/package/sass-module-map)
